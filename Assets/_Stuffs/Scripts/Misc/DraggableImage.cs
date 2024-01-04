@@ -7,6 +7,7 @@ public class DraggableImage : MonoBehaviour, IDragHandler, IPointerDownHandler, 
     private Canvas canvas;
     private CanvasGroup canvasGroup;
     private Transform currentRawImage;
+    [SerializeField] private int FaceID; // Null = 0, Male = 1, Female = 2
     private Transform panelTransform; // Reference to the panel's transform
     [SerializeField] GameObject defaultPosition; // Default position to return the button
 
@@ -53,13 +54,21 @@ public class DraggableImage : MonoBehaviour, IDragHandler, IPointerDownHandler, 
                 // Update the currentRawImage reference
                 currentRawImage = collider.transform;
 
+                if(collider.gameObject.name == "MaskedFaceSlot(Male)")
+                {
+                    FaceID = 1;
+                }
+                else if(collider.gameObject.name == "MaskedFaceSlot(Female)")
+                {
+                    FaceID = 2;
+                }
                 return; // Stop checking for RawImages once one is found
             }
         }
 
         // If not over any RawImage, set the parent back to the panel
         transform.SetParent(panelTransform);
-
+        FaceID = 0;
         // Return the button to the default position
         rectTransform.localPosition = defaultPosition.transform.localPosition;
     }
