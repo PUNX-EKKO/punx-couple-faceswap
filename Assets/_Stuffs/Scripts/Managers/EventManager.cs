@@ -39,5 +39,7 @@ public class EventManager : MonoBehaviour
     public static AppEventVoucheError OnVoucherFailed;
     public static AppEvent OnFetchedError;
     public static AppEventIAP OnPurchaseSuccess;
+    public static AkoolUrlEvent OnFaceDataFetched;
+
     #endregion
 }

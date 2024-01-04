@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Networking;
 using UnityEngine.UI;
+using System;
 
 public class KeypointHandller : MonoBehaviour
 {
- public string imageUrl; // URL of the image you want to display
+    public string imageUrl; // URL of the image you want to display
 
     public Vector2Int[] face1Keypoints; // Array of keypoints in original image pixel coordinates
     public Vector2Int[] face2Keypoints; // Array of keypoints in original image pixel coordinates
@@ -17,19 +18,26 @@ public class KeypointHandller : MonoBehaviour
     public Image userface2;
 
     private Texture2D loadedTexture;
+    public GameObject faceAssignUI;
 
 
-      IEnumerator Start()
+    void OnEnable()
     {
-        yield return LoadImageFromURL(imageUrl);
+        EventManager.OnFaceDataFetched += FaceDataFetched;
     }
 
-    void Update()
+  
+
+    void OnDisable()
     {
-        if(Input.GetKeyDown(KeyCode.Space)){
-            CropFace1(face1Keypoints[indexToCrop]);
-            CropFace2(face2Keypoints[indexToCrop]);
-        }
+        EventManager.OnFaceDataFetched -= FaceDataFetched;
+    }
+
+
+    private void FaceDataFetched(string url)
+    {
+        faceAssignUI.SetActive(true);
+       StartCoroutine(LoadImageFromURL(url));
     }
 
     IEnumerator LoadImageFromURL(string url)
@@ -116,5 +124,16 @@ public class KeypointHandller : MonoBehaviour
     {
         Sprite sprite = Sprite.Create(croppedTexture, new Rect(0, 0, croppedTexture.width, croppedTexture.height), new Vector2(0.5f, 0.5f));
         userface2.sprite = sprite;
+    }
+}
+
+public class FaceData{
+    public string url;
+    public Vector2Int[] faceKeypoints;
+
+    public FaceData(string url, Vector2Int[] faceKeypoints)
+    {
+        this.url = url;
+        this.faceKeypoints = faceKeypoints;
     }
 }

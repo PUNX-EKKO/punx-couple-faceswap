@@ -29,6 +29,7 @@ namespace PUNX.Core{
         [Space]
         [Header("Reference")]
         public ImagesDataSO _imagesData;
+        public KeypointHandller keypointHandller;
 
         void OnEnable()
         {
@@ -119,6 +120,8 @@ namespace PUNX.Core{
                 //TODO; Add error if there is no face datected!
                 _face1Landmarks = new List<string>();
                 _face2Landmarks = new List<string>();
+                keypointHandller.face1Keypoints = new Vector2Int[4];
+                keypointHandller.face2Keypoints  = new Vector2Int[4];
                 // Access the landmarks array
                 List<List<List<int>>> landmarks = faceDetectResponse.landmarks;
                 try
@@ -146,7 +149,9 @@ namespace PUNX.Core{
                     int x1 = landmark1[0]; 
                     int y1 = landmark1[1]; 
                     _face1Landmarks.Add($"{x1},{y1}");
+                    keypointHandller.face1Keypoints[i] = new Vector2Int(x1, y1);
                 }
+              
                 for (int i = 0; i < 4; i++)
                 {
                     
@@ -155,20 +160,26 @@ namespace PUNX.Core{
                     // Accessing individual values
                     int x1 = landmark1[0]; 
                     int y1 = landmark1[1]; 
-                    Debug.Log($"Landmarks: {x1},{y1}");
                     _face2Landmarks.Add($"{x1},{y1}");
+                    keypointHandller.face2Keypoints[i] = new Vector2Int(x1, y1);
                 }
-               yield return new WaitUntil(( )=> _face1Landmarks.Count.Equals(4) && _face2Landmarks.Count.Equals(4));
-               m_imageFaceSwap.sourceImage = new List<SourceImage>();
-               m_imageFaceSwap.sourceImage.Add(new SourceImage(m_faceDetect.image_url, 
-                $"{_face1Landmarks[0]}:{_face1Landmarks[1]}:{_face1Landmarks[2]}:{_face1Landmarks[3]}")); // Setup face 1 keypoint values
-
-                 m_imageFaceSwap.sourceImage.Add(new SourceImage(m_faceDetect.image_url, 
-                $"{_face2Landmarks[0]}:{_face2Landmarks[1]}:{_face2Landmarks[2]}:{_face2Landmarks[3]}")); // Setup face 2 keypoint values
+                yield return new WaitUntil(( )=> _face1Landmarks.Count.Equals(4) && _face2Landmarks.Count.Equals(4));
+                m_imageFaceSwap.sourceImage = new List<SourceImage>();
+                SetupFace();
                 Debug.Log($"Face Detection Complete!");
              //   EventManager.OnFaceDetectionComplete?.Invoke();
 
         }
+
+        private void SetupFace(){
+                m_imageFaceSwap.sourceImage.Add(new SourceImage(m_faceDetect.image_url, 
+                $"{_face1Landmarks[0]}:{_face1Landmarks[1]}:{_face1Landmarks[2]}:{_face1Landmarks[3]}")); // Setup face 1 keypoint values
+
+                m_imageFaceSwap.sourceImage.Add(new SourceImage(m_faceDetect.image_url, 
+                $"{_face2Landmarks[0]}:{_face2Landmarks[1]}:{_face2Landmarks[2]}:{_face2Landmarks[3]}")); // Setup face 2 keypoint values
+                EventManager.OnFaceDataFetched?.Invoke(m_faceDetect.image_url);
+        }
+       
 
         public void SetupMaleTargetImage(int imgIndex, Action OnSetupDone){
             m_imageFaceSwap.targetImage = new List<TargetImage>();
