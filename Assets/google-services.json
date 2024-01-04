@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "602615454016",
+    "firebase_url": "https://k-idol-2d13b-default-rtdb.firebaseio.com",
+    "project_id": "k-idol-2d13b",
+    "storage_bucket": "k-idol-2d13b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:602615454016:android:b69fa30b6e161267f8c2a5",
+        "android_client_info": {
+          "package_name": "com.punx.kidolai"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDd2r95WX48nmE2MK2uwepzMzpDuZ9pzg4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

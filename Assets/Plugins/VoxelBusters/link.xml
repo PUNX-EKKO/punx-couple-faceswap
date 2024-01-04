@@ -1,0 +1,18 @@
+﻿<linker>
+  <assembly fullname="VoxelBusters.EssentialKit">
+    <type fullname="VoxelBusters.EssentialKit.AddressBookCore.NullAddressBookInterface" preserve="all" />
+    <type fullname="VoxelBusters.EssentialKit.CloudServicesCore.NullCloudServicesInterface" preserve="all" />
+    <type fullname="VoxelBusters.EssentialKit.GameServicesCore.NullGameServicesInterface" preserve="all" />
+    <type fullname="VoxelBusters.EssentialKit.NetworkServicesCore.UnityNetworkServicesInterface" preserve="all" />
+    <type fullname="VoxelBusters.EssentialKit.NotificationServicesCore.NullNotificationCenterInterface" preserve="all" />
+    <type fullname="VoxelBusters.EssentialKit.WebViewCore.NullNativeWebView" preserve="all" />
+    <type fullname="VoxelBusters.EssentialKit.ExtrasCore.NullNativeUtilityInterface" preserve="all" />
+    <type fullname="VoxelBusters.EssentialKit.DeepLinkServicesCore.NullDeepLinkServicesInterface" preserve="all" />
+  </assembly>
+  <assembly fullname="VoxelBusters.EssentialKit.AndroidModule">
+    <namespace fullname="VoxelBusters.EssentialKit.BillingServicesCore.Android" preserve="all" />
+    <namespace fullname="VoxelBusters.EssentialKit.MediaServicesCore.Android" preserve="all" />
+    <namespace fullname="VoxelBusters.EssentialKit.NativeUICore.Android" preserve="all" />
+    <namespace fullname="VoxelBusters.EssentialKit.SharingServicesCore.Android" preserve="all" />
+  </assembly>
+</linker>
