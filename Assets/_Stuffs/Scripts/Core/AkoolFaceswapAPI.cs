@@ -15,7 +15,8 @@ namespace PUNX.Core{
         [SerializeField]private string m_baseURL;
         [SerializeField]private ImageFaceSwap m_imageFaceSwap;
         [SerializeField]private FaceDetect m_faceDetect;
-        private List<string> _faceLandmarks;
+        private List<string> _face1Landmarks;
+        private List<string> _face2Landmarks;
         
 
         [Space]
@@ -79,6 +80,7 @@ namespace PUNX.Core{
             Debug.Log($"Status: {response.StatusCode}");
             if(response.StatusCode.Equals(200)){
                faceDetectResponse = JsonConvert.DeserializeObject<FaceDetectResponse>(response.Data.ToString());
+               Debug.Log($"Face Data: {response.Data.ToString()}");
                 StartCoroutine(SetupSourceImage());
             }else{
                 Debug.LogError($"Face Detection Failed!");
@@ -115,7 +117,8 @@ namespace PUNX.Core{
         private IEnumerator SetupSourceImage(){
 
                 //TODO; Add error if there is no face datected!
-                _faceLandmarks = new List<string>();
+                _face1Landmarks = new List<string>();
+                _face2Landmarks = new List<string>();
                 // Access the landmarks array
                 List<List<List<int>>> landmarks = faceDetectResponse.landmarks;
                 try
@@ -123,7 +126,7 @@ namespace PUNX.Core{
                     if(landmarks.Count < 1){
                     EventManager.OnFetchedError?.Invoke(200);
                     yield break;
-                    }else if (landmarks.Count >=2) {
+                    }else if (landmarks.Count >=3) {
                         EventManager.OnFetchedError?.Invoke(300);
                         yield break;
                     }
@@ -142,13 +145,28 @@ namespace PUNX.Core{
                     // Accessing individual values
                     int x1 = landmark1[0]; 
                     int y1 = landmark1[1]; 
-                    _faceLandmarks.Add($"{x1},{y1}");
+                    _face1Landmarks.Add($"{x1},{y1}");
                 }
-               yield return new WaitUntil(( )=> _faceLandmarks.Count.Equals(4));
+                for (int i = 0; i < 4; i++)
+                {
+                    
+                     // Access specific landmarks
+                    List<int> landmark1 = landmarks[1][i]; // Accessing the first landmark. Note: Change the 2nd array value to change the landmark value
+                    // Accessing individual values
+                    int x1 = landmark1[0]; 
+                    int y1 = landmark1[1]; 
+                    Debug.Log($"Landmarks: {x1},{y1}");
+                    _face2Landmarks.Add($"{x1},{y1}");
+                }
+               yield return new WaitUntil(( )=> _face1Landmarks.Count.Equals(4) && _face2Landmarks.Count.Equals(4));
                m_imageFaceSwap.sourceImage = new List<SourceImage>();
                m_imageFaceSwap.sourceImage.Add(new SourceImage(m_faceDetect.image_url, 
-                $"{_faceLandmarks[0]}:{_faceLandmarks[1]}:{_faceLandmarks[2]}:{_faceLandmarks[3]}")); // Setup opts values
-                EventManager.OnFaceDetectionComplete?.Invoke();
+                $"{_face1Landmarks[0]}:{_face1Landmarks[1]}:{_face1Landmarks[2]}:{_face1Landmarks[3]}")); // Setup face 1 keypoint values
+
+                 m_imageFaceSwap.sourceImage.Add(new SourceImage(m_faceDetect.image_url, 
+                $"{_face2Landmarks[0]}:{_face2Landmarks[1]}:{_face2Landmarks[2]}:{_face2Landmarks[3]}")); // Setup face 2 keypoint values
+                Debug.Log($"Face Detection Complete!");
+             //   EventManager.OnFaceDetectionComplete?.Invoke();
 
         }
 
