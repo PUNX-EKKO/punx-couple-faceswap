@@ -38,6 +38,9 @@ public class AppCoreManager : PUNXWebRequest
     {
        instance = this;
     }
+
+ 
+    
     void OnEnable()
     {
         EventManager.OnPickedSourceImage += SourceImageSelected;
@@ -205,9 +208,6 @@ public class AppCoreManager : PUNXWebRequest
             case Gender.Male:
                 akool.SetupMaleTargetImage(imageIndexToGenerate[0],OnFaceSwapReady);
             break; 
-            case Gender.Female:
-                akool.SetupFemaleTargetImage(imageIndexToGenerate[0],OnFaceSwapReady);
-            break;
         }
     }
     float percentageValPerItem;

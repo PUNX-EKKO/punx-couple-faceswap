@@ -127,7 +127,7 @@ public class FirestoreDatabase : MonoBehaviour
     /// </summary>
     private void LoadAppData(){
         GetTargetImages(Gender.Male);
-        GetTargetImages(Gender.Female);
+      //  GetTargetImages(Gender.Female);
         GetOrders();
         GetAppSettings();
     }
@@ -549,14 +549,18 @@ public class FirestoreDatabase : MonoBehaviour
     }
     void GetTargetImages(Gender gender)
     {
+        //Temp
+        EventManager.OnAddLoadingValue?.Invoke(10);
+        EventManager.OnAddLoadingValue?.Invoke(10);
         
          switch (gender)
         {
             case Gender.Male:
             FetchTargetImageUrl(gender,imagesUrl=>{
-                if (imagesUrl != null){imageData.maleTargetImages = imagesUrl;
-                    GetTargetImagesLandmarks(gender);
-                     EventManager.OnAddLoadingValue?.Invoke(10);
+                if (imagesUrl != null){
+                    //imageData.maleTargetImages = imagesUrl;
+                    //GetTargetImagesLandmarks(gender);
+                    // EventManager.OnAddLoadingValue?.Invoke(10);
                 }   
                 else {
                     Debug.LogError($"Unable to Fetch Target Images. Please Try again later");
@@ -567,9 +571,10 @@ public class FirestoreDatabase : MonoBehaviour
             
             case Gender.Female:
             FetchTargetImageUrl(gender,imagesUrl=>{
-                if (imagesUrl != null){imageData.femaleTargetImages = imagesUrl;
-                    GetTargetImagesLandmarks(gender);
-                     EventManager.OnAddLoadingValue?.Invoke(10);
+                if (imagesUrl != null){
+                    //imageData.femaleTargetImages = imagesUrl;
+                    //GetTargetImagesLandmarks(gender);
+                   //  EventManager.OnAddLoadingValue?.Invoke(10);
                 }
                 else {
                     Debug.LogError($"Unable to Fetch Target Images. Please Try again later");

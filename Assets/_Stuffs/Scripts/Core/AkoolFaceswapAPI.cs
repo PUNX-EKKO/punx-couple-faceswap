@@ -167,7 +167,7 @@ namespace PUNX.Core{
                 m_imageFaceSwap.sourceImage = new List<SourceImage>();
                 SetupFace();
                 Debug.Log($"Face Detection Complete!");
-             //   EventManager.OnFaceDetectionComplete?.Invoke();
+                EventManager.OnFaceDetectionComplete?.Invoke();
 
         }
 
@@ -183,15 +183,23 @@ namespace PUNX.Core{
 
         public void SetupMaleTargetImage(int imgIndex, Action OnSetupDone){
             m_imageFaceSwap.targetImage = new List<TargetImage>();
-            m_imageFaceSwap.targetImage.Add(new TargetImage(_imagesData.maleTargetImages[imgIndex],_imagesData.maleFaceLandmarks[imgIndex]));
+            Debug.Log($"Face Data: {_imagesData.maleTargetImages[imgIndex]} & {_imagesData.maleFaceLandmarks[imgIndex]}");
+            SplitGenderKeypoints(_imagesData.maleTargetImages[imgIndex],_imagesData.maleFaceLandmarks[imgIndex]);
             m_imageFaceSwap.modifyImage = _imagesData.maleTargetImages[imgIndex];
             OnSetupDone?.Invoke();
         }
-        public void SetupFemaleTargetImage(int imgIndex,Action OnSetupDone){
-             m_imageFaceSwap.targetImage = new List<TargetImage>();
-            m_imageFaceSwap.targetImage.Add(new TargetImage(_imagesData.femaleTargetImages[imgIndex],_imagesData.femaleFaceLandmarks[imgIndex]));
-            m_imageFaceSwap.modifyImage = _imagesData.femaleTargetImages[imgIndex];
-            OnSetupDone?.Invoke();
+
+        void SplitGenderKeypoints(string url,string keypoints)
+        {
+            // Split the string based on "-"
+            string[] groups = keypoints.Split('-');
+
+            // Iterate through each group
+            foreach (string group in groups)
+            {
+                Debug.Log("Group: " + group);
+                 m_imageFaceSwap.targetImage.Add(new TargetImage(url,group));
+            }
         }
     }
 }
