@@ -16,6 +16,7 @@ public class KeypointHandller : MonoBehaviour
     public int cropHeight;
     public Image userface1;
     public Image userface2;
+    public DraggableImage[] draggableImages;
 
     private Texture2D loadedTexture;
     public GameObject faceAssignUI;
@@ -33,6 +34,10 @@ public class KeypointHandller : MonoBehaviour
         EventManager.OnFaceDataFetched -= FaceDataFetched;
     }
 
+    void Start()
+    {
+       // StartCoroutine(LoadImageFromURL(imageUrl));
+    }
 
     private void FaceDataFetched(string url)
     {

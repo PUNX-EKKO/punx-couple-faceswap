@@ -34,10 +34,15 @@ namespace PUNX.Core{
         void OnEnable()
         {
             EventManager.OnSourceImagePosted += OnSourceImageUploaded;
+            EventManager.OnMaleFaceDataFetched += FetchedMaleFaceData;
+             EventManager.OnFemaleFaceDataFetched += FetchedFemaleFaceData;
         }
+
         void OnDisable()
         {
             EventManager.OnSourceImagePosted -= OnSourceImageUploaded;
+            EventManager.OnMaleFaceDataFetched -= FetchedMaleFaceData;
+            EventManager.OnFemaleFaceDataFetched -= FetchedFemaleFaceData;
         }
 
 
@@ -162,25 +167,46 @@ namespace PUNX.Core{
                     int y1 = landmark1[1]; 
                     _face2Landmarks.Add($"{x1},{y1}");
                     keypointHandller.face2Keypoints[i] = new Vector2Int(x1, y1);
+                    
                 }
                 yield return new WaitUntil(( )=> _face1Landmarks.Count.Equals(4) && _face2Landmarks.Count.Equals(4));
-                m_imageFaceSwap.sourceImage = new List<SourceImage>();
+                m_imageFaceSwap.sourceImage = new List<SourceImage>();         
+                for (int i = 0; i < 2; i++) // Add initial 2 empty source image
+                {
+                    m_imageFaceSwap.sourceImage.Add(new SourceImage("",""));
+                }
+                keypointHandller.draggableImages[0].faceProfileSO.keypoints = keypointHandller.face1Keypoints;
+                keypointHandller.draggableImages[1].faceProfileSO.keypoints = keypointHandller.face2Keypoints;
                 SetupFace();
                 Debug.Log($"Face Detection Complete!");
-                EventManager.OnFaceDetectionComplete?.Invoke();
-
         }
 
         private void SetupFace(){
-                m_imageFaceSwap.sourceImage.Add(new SourceImage(m_faceDetect.image_url, 
-                $"{_face1Landmarks[0]}:{_face1Landmarks[1]}:{_face1Landmarks[2]}:{_face1Landmarks[3]}")); // Setup face 1 keypoint values
-
-                m_imageFaceSwap.sourceImage.Add(new SourceImage(m_faceDetect.image_url, 
-                $"{_face2Landmarks[0]}:{_face2Landmarks[1]}:{_face2Landmarks[2]}:{_face2Landmarks[3]}")); // Setup face 2 keypoint values
-                EventManager.OnFaceDataFetched?.Invoke(m_faceDetect.image_url);
+            EventManager.OnFaceDataFetched?.Invoke(m_faceDetect.image_url);
         }
-       
 
+        private void FetchedMaleFaceData(string value)
+        {
+            m_imageFaceSwap.sourceImage[0] = new SourceImage(m_faceDetect.image_url,value); // Setup face 1 keypoint values;
+        }
+        private void FetchedFemaleFaceData(string value)
+        {
+            m_imageFaceSwap.sourceImage[1] = new SourceImage(m_faceDetect.image_url,value); // Setup face 2 keypoint values
+        }
+
+       
+        public void DoneGenderSetup(){
+           
+            for (int i = 0; i < keypointHandller.draggableImages.Length; i++)
+            {
+                if(keypointHandller.draggableImages[i].DraggableImageStatus.Equals(0)){
+                    Debug.LogError($"Please Assign Gender!");
+                    return;
+                 }
+            }
+            EventManager.OnFaceDetectionComplete?.Invoke();
+            keypointHandller.faceAssignUI.SetActive(false);
+        }
         public void SetupMaleTargetImage(int imgIndex, Action OnSetupDone){
             m_imageFaceSwap.targetImage = new List<TargetImage>();
             Debug.Log($"Face Data: {_imagesData.maleTargetImages[imgIndex]} & {_imagesData.maleFaceLandmarks[imgIndex]}");

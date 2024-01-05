@@ -11,6 +11,7 @@ public class EventManager : MonoBehaviour
     public delegate void AWSEvent(string value);
     public delegate void AkoolEvent();
     public delegate void AkoolUrlEvent(string value);
+    public delegate void AkoolFaceDataEvent(string value);
     public delegate void AppEvent(float value);
     public delegate void AppEventBool(bool value);
     public delegate void AppEventVoucher(VoucherData value);
@@ -40,6 +41,8 @@ public class EventManager : MonoBehaviour
     public static AppEvent OnFetchedError;
     public static AppEventIAP OnPurchaseSuccess;
     public static AkoolUrlEvent OnFaceDataFetched;
-
+    
+    public static AkoolFaceDataEvent OnMaleFaceDataFetched;
+    public static AkoolFaceDataEvent OnFemaleFaceDataFetched;
     #endregion
 }

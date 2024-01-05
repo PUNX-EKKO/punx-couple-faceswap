@@ -1,13 +1,24 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System;
+using PUNX.Core;
 
 public class DraggableImage : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
 {
+    public FaceProfileSO faceProfileSO;
+    [SerializeField]private AkoolFaceswapAPI m_akool;
     private RectTransform rectTransform;
     private Canvas canvas;
     private CanvasGroup canvasGroup;
     private Transform currentRawImage;
-    [SerializeField] private int FaceID; // Null = 0, Male = 1, Female = 2
+
+    /// <summary>
+    /// Draggable Image Status
+    ///  Not Assigned = 0, 
+    ///  Assigned to Male = 1, 
+    ///  Assigned to Female = 2
+    /// </summary>
+    public int DraggableImageStatus; 
     private Transform panelTransform; // Reference to the panel's transform
     [SerializeField] GameObject defaultPosition; // Default position to return the button
 
@@ -56,11 +67,14 @@ public class DraggableImage : MonoBehaviour, IDragHandler, IPointerDownHandler, 
 
                 if(collider.gameObject.name == "MaskedFaceSlot(Male)")
                 {
-                    FaceID = 1;
+                    DraggableImageStatus = 1;
+                    EventManager.OnMaleFaceDataFetched?.Invoke($"{faceProfileSO.keypoints[0]}:{faceProfileSO.keypoints[1]}:{faceProfileSO.keypoints[2]}:{faceProfileSO.keypoints[3]}");
+                    
                 }
                 else if(collider.gameObject.name == "MaskedFaceSlot(Female)")
                 {
-                    FaceID = 2;
+                    DraggableImageStatus = 2;
+                    EventManager.OnFemaleFaceDataFetched?.Invoke($"{faceProfileSO.keypoints[0]}:{faceProfileSO.keypoints[1]}:{faceProfileSO.keypoints[2]}:{faceProfileSO.keypoints[3]}");
                 }
                 return; // Stop checking for RawImages once one is found
             }
@@ -68,7 +82,8 @@ public class DraggableImage : MonoBehaviour, IDragHandler, IPointerDownHandler, 
 
         // If not over any RawImage, set the parent back to the panel
         transform.SetParent(panelTransform);
-        FaceID = 0;
+        DraggableImageStatus = 0;
+        //TODO: Add Checking if the item is assigned
         // Return the button to the default position
         rectTransform.localPosition = defaultPosition.transform.localPosition;
     }
