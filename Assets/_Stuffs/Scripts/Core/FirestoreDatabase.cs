@@ -86,7 +86,6 @@ public class FirestoreDatabase : MonoBehaviour
         Debug.LogError("Failed to sign in anonymously: " + authTask.Exception);
     } else {
         Firebase.Auth.FirebaseUser user = _auth.CurrentUser;
-        Debug.Log("Logged in as: " + user.UserId);
         // Proceed with your logic after successful authentication
     }
 }
@@ -126,8 +125,7 @@ public class FirestoreDatabase : MonoBehaviour
     /// Init loading user profile data
     /// </summary>
     private void LoadAppData(){
-        GetTargetImages(Gender.Male);
-      //  GetTargetImages(Gender.Female);
+        GetTargetImages();
         GetOrders();
         GetAppSettings();
     }
@@ -425,7 +423,7 @@ public class FirestoreDatabase : MonoBehaviour
             { "landmarks", imageData.sourceImages}
         };
 
-        DocumentReference docRef = _database.Collection("Admin").Document("Resources").Collection("TargetImages").Document("FemaleFaceLandmark");
+        DocumentReference docRef = _database.Collection("Admin").Document("Resources").Collection("TargetImages").Document("Couple");
         docRef.SetAsync(data).ContinueWith(task => {
             if (task.IsCompleted && !task.IsFaulted && !task.IsCanceled)
             {
@@ -547,68 +545,32 @@ public class FirestoreDatabase : MonoBehaviour
             else {Debug.LogWarning("User document not found or an error occurred.");}
         });
     }
-    void GetTargetImages(Gender gender)
+    void GetTargetImages()
     {
         //Temp
         EventManager.OnAddLoadingValue?.Invoke(10);
-        EventManager.OnAddLoadingValue?.Invoke(10);
-        
-         switch (gender)
-        {
-            case Gender.Male:
-            FetchTargetImageUrl(gender,imagesUrl=>{
+         FetchTargetImageUrl(imagesUrl=>{
                 if (imagesUrl != null){
-                    //imageData.maleTargetImages = imagesUrl;
-                    //GetTargetImagesLandmarks(gender);
-                    // EventManager.OnAddLoadingValue?.Invoke(10);
+                    imageData.coupleTargetImages = imagesUrl;
+                    GetTargetImagesLandmarks();
+                    EventManager.OnAddLoadingValue?.Invoke(10);
                 }   
                 else {
                     Debug.LogError($"Unable to Fetch Target Images. Please Try again later");
                     EventManager.OnFetchedError?.Invoke(400);
                     }
             });
-            break;
+       
             
-            case Gender.Female:
-            FetchTargetImageUrl(gender,imagesUrl=>{
-                if (imagesUrl != null){
-                    //imageData.femaleTargetImages = imagesUrl;
-                    //GetTargetImagesLandmarks(gender);
-                   //  EventManager.OnAddLoadingValue?.Invoke(10);
-                }
-                else {
-                    Debug.LogError($"Unable to Fetch Target Images. Please Try again later");
-                    EventManager.OnFetchedError?.Invoke(400);
-                    }
-            });
-            break;
-            
-        }
         
     }
-    void GetTargetImagesLandmarks(Gender gender)
+    void GetTargetImagesLandmarks()
     {
-        
-         switch (gender)
-        {
-            case Gender.Male:
-            FetchTargetImageLandmarks(gender,landmark=>{
-                if (landmark != null){imageData.maleFaceLandmarks = landmark;
+        FetchTargetImageLandmarks(landmark=>{
+                if (landmark != null){imageData.coupleFaceLandmarks = landmark;
                     EventManager.OnTargetImagesFetched?.Invoke();}
                 else {Debug.LogWarning("User document not found or an error occurred.");}
-            });
-            break;
-            
-            case Gender.Female:
-            FetchTargetImageLandmarks(gender,landmark=>{
-                if (landmark != null){imageData.femaleFaceLandmarks = landmark;
-                    EventManager.OnTargetImagesFetched?.Invoke();}
-                else {Debug.LogWarning("User document not found or an error occurred.");}
-            });
-            break;
-            
-        }
-        
+        });
     }
 
 
@@ -683,9 +645,9 @@ public class FirestoreDatabase : MonoBehaviour
                 }
         });
     }
-    public void FetchTargetImageUrl(Gender gender,System.Action<List<string>> callback)
+    public void FetchTargetImageUrl(System.Action<List<string>> callback)
     {
-        DocumentReference collectionRef = _database.Collection("Admin").Document("Resources").Collection("TargetImages").Document(gender.ToString());
+        DocumentReference collectionRef = _database.Collection("Admin").Document("Resources").Collection("TargetImages").Document("Couple");
         collectionRef.GetSnapshotAsync().ContinueWithOnMainThread(task =>
         {
              if (task.IsCompleted)
@@ -694,9 +656,10 @@ public class FirestoreDatabase : MonoBehaviour
                     if (snapshot.Exists)
                     {
                         Dictionary<string, object> data = snapshot.ToDictionary();
-
+                        Debug.Log($"Fetch Target URL");
                         if (data.ContainsKey("images_url"))
                         {
+                            Debug.Log($"images_url");
                             List<object> arrayData = (List<object>)data["images_url"];
                             List<string> stringArray = arrayData.Select(item => item.ToString()).ToList();
                             callback(stringArray);
@@ -707,9 +670,9 @@ public class FirestoreDatabase : MonoBehaviour
         });
     }
 
-    public void FetchTargetImageLandmarks(Gender gender,System.Action<List<string>> callback)
+    public void FetchTargetImageLandmarks(System.Action<List<string>> callback)
     {
-        DocumentReference collectionRef = _database.Collection("Admin").Document("Resources").Collection("TargetImages").Document($"{gender.ToString()}FaceLandmark");
+        DocumentReference collectionRef = _database.Collection("Admin").Document("Resources").Collection("TargetImages").Document($"CoupleFaceLandmark");
         collectionRef.GetSnapshotAsync().ContinueWithOnMainThread(task =>
         {
              if (task.IsCompleted)

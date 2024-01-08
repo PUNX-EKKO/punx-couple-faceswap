@@ -10,11 +10,8 @@ public class ImagesDataSO : ScriptableObject
    public List<string> sourceImages;
 
    [Header("===Male Target Images===")]
-   public List<string> maleTargetImages;
-   public List<string> maleFaceLandmarks;
+   public List<string> coupleTargetImages;
+   public List<string> coupleFaceLandmarks;
 
 
-   [Header("===Female Target Images===")]
-   public List<string> femaleTargetImages;
-   public List<string> femaleFaceLandmarks;
 }

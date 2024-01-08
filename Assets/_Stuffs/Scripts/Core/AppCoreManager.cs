@@ -206,7 +206,7 @@ public class AppCoreManager : PUNXWebRequest
         switch (m_gender)
         {
             case Gender.Male:
-                akool.SetupMaleTargetImage(imageIndexToGenerate[0],OnFaceSwapReady);
+                akool.SetupCoupleTargetImage(imageIndexToGenerate[0],OnFaceSwapReady);
             break; 
         }
     }
@@ -271,18 +271,7 @@ public class AppCoreManager : PUNXWebRequest
         percentageValPerItem = 50 / imageIndexToGenerate.Count;
     }
     private int GetTargetImageCount(){
-        switch (m_gender)
-        {
-            case Gender.Male:
-                return imagesData.maleTargetImages.Count - 1;
-            break;
-
-            case Gender.Female:
-                return imagesData.femaleTargetImages.Count -1;
-            break;
-        }
-
-        return 0;
+         return imagesData.coupleTargetImages.Count - 1;
     }
 
     public void SwitchGender(bool isMale){
@@ -292,16 +281,8 @@ public class AppCoreManager : PUNXWebRequest
     } 
     public void InitLoad(){
         akool.CheckAppCredits();
-        if(PlayerPrefs.HasKey("Gender")){
-            UiHandler.ChangeScreen(2);
-            if(PlayerPrefs.GetString("Gender") == "Male"){
-                m_gender = Gender.Male;
-            }else{
-                m_gender = Gender.Female;
-            }
-        }else{
-            UiHandler.ChangeScreen(1);
-        }
+        UiHandler.ChangeScreen(2);
+
     }
 
 

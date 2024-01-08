@@ -17,7 +17,7 @@ MonoBehaviour:
     m_appStoreIds:
       m_ios: 6471567022
       m_tvos: 
-      m_android: com.punx.kidolai
+      m_android: com.punx.coupleai
     m_usagePermissionSettings:
       m_addressBookUsagePermission:
         m_description: $productName uses contacts.

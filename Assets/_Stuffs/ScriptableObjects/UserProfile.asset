@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f96d1d4417d717e43a287f734688d754, type: 3}
   m_Name: UserProfile
   m_EditorClassIdentifier: 
-  uuid: 
-  deviceType: 
+  uuid: 03be66
+  deviceType: WindowsEditor
   akoolToken: 
   allowImageGeneration: 0
   hasIAPDiscount: 0

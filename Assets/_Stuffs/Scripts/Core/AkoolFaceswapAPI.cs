@@ -209,11 +209,11 @@ namespace PUNX.Core{
             EventManager.OnFaceDetectionComplete?.Invoke();
             keypointHandller.faceAssignUI.SetActive(false);
         }
-        public void SetupMaleTargetImage(int imgIndex, Action OnSetupDone){
+        public void SetupCoupleTargetImage(int imgIndex, Action OnSetupDone){
             m_imageFaceSwap.targetImage = new List<TargetImage>();
-            Debug.Log($"Face Data: {_imagesData.maleTargetImages[imgIndex]} & {_imagesData.maleFaceLandmarks[imgIndex]}");
-            SplitGenderKeypoints(_imagesData.maleTargetImages[imgIndex],_imagesData.maleFaceLandmarks[imgIndex]);
-            m_imageFaceSwap.modifyImage = _imagesData.maleTargetImages[imgIndex];
+            Debug.Log($"Face Data: {_imagesData.coupleTargetImages[imgIndex]} & {_imagesData.coupleFaceLandmarks[imgIndex]}");
+            SplitGenderKeypoints(_imagesData.coupleTargetImages[imgIndex],_imagesData.coupleFaceLandmarks[imgIndex]);
+            m_imageFaceSwap.modifyImage = _imagesData.coupleTargetImages[imgIndex];
             OnSetupDone?.Invoke();
         }
 
