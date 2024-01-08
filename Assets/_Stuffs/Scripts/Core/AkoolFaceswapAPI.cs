@@ -187,11 +187,13 @@ namespace PUNX.Core{
 
         private void FetchedMaleFaceData(string value)
         {
-            m_imageFaceSwap.sourceImage[0] = new SourceImage(m_faceDetect.image_url,value); // Setup face 1 keypoint values;
+            var filteredValue = value.Replace("(",String.Empty).Replace(")",String.Empty).Replace(" ",String.Empty);
+            m_imageFaceSwap.sourceImage[0] = new SourceImage(m_faceDetect.image_url,filteredValue); // Setup face 1 keypoint values;
         }
         private void FetchedFemaleFaceData(string value)
         {
-            m_imageFaceSwap.sourceImage[1] = new SourceImage(m_faceDetect.image_url,value); // Setup face 2 keypoint values
+            var filteredValue = value.Replace("(",String.Empty).Replace(")",String.Empty).Replace(" ",String.Empty);
+            m_imageFaceSwap.sourceImage[1] = new SourceImage(m_faceDetect.image_url,filteredValue); // Setup face 2 keypoint values
         }
 
        
