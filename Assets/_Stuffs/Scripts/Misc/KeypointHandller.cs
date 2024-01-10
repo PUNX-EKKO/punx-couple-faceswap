@@ -20,6 +20,7 @@ public class KeypointHandller : MonoBehaviour
 
     private Texture2D loadedTexture;
     public GameObject faceAssignUI;
+    [SerializeField]private Sprite m_facePlaceholder;
 
 
     void OnEnable()
@@ -34,15 +35,13 @@ public class KeypointHandller : MonoBehaviour
         EventManager.OnFaceDataFetched -= FaceDataFetched;
     }
 
-    void Start()
-    {
-       // StartCoroutine(LoadImageFromURL(imageUrl));
-    }
 
     private void FaceDataFetched(string url)
     {
         faceAssignUI.SetActive(true);
-       StartCoroutine(LoadImageFromURL(url));
+        userface1.sprite = m_facePlaceholder;
+        userface2.sprite = m_facePlaceholder;
+        StartCoroutine(LoadImageFromURL(url));
     }
 
     IEnumerator LoadImageFromURL(string url)

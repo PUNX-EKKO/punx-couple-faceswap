@@ -50,12 +50,12 @@ public class UIHandler : MonoBehaviour
         {
             case 200:
                 errorWarningHandler.gameObject.SetActive(true);
-                errorWarningHandler.SetErrorMessage(200,"Error","No face detected. Please try again with good lighting, ensuring your face is clearly visible.");
+                errorWarningHandler.SetErrorMessage(200,"Error","Ensure that there are at least two people's faces in the frame. Please try again with good lighting, making sure your face is clearly visible.");
             break;
 
             case 300:
                 errorWarningHandler.gameObject.SetActive(true);
-                errorWarningHandler.SetErrorMessage(300,"Error","Multiple faces detected. Please retry with only one person's face in the frame.");
+                errorWarningHandler.SetErrorMessage(300,"Error","Detected more than two faces. Please retry with only two people's faces in the frame.");
             break;
 
             case 400:

@@ -65,11 +65,10 @@ namespace PUNX.Helpers
                 Value = "application/json"
             };
             string imageID = System.Guid.NewGuid().ToString();
-            string imgUrl = $"https://kidol-punx-filestorage.s3.ap-southeast-2.amazonaws.com/couplesourceimages/{userId}%2Fimg{imageID}.jpg";
+            string imgUrl = $"https://kidol-punx-filestorage.s3.ap-southeast-2.amazonaws.com/sourceimages/000-couple{userId}%2Fimg{imageID}.jpg";
             sourceUrl.Invoke(imgUrl.Replace("%2F","/"));
-            Debug.Log($"Upload URI: https://3p2kpq11b7.execute-api.ap-southeast-2.amazonaws.com/{environment}/kidol-punx-filestorage/couplesourceimages/{userId}%2Fimg{imageID}.jpg");
             //Send a post request
-            StartCoroutine(RestWebClient.Instance.HttpPut($"https://3p2kpq11b7.execute-api.ap-southeast-2.amazonaws.com/{environment}/kidol-punx-filestorage/couplesourceimages/{userId}%2Fimg{imageID}.jpg", bytes, (r) => OnRequestComplete(r), new List<RequestHeader> 
+            StartCoroutine(RestWebClient.Instance.HttpPut($"https://3p2kpq11b7.execute-api.ap-southeast-2.amazonaws.com/{environment}/kidol-punx-filestorage/sourceimages/000-couple{userId}%2Fimg{imageID}.jpg", bytes, (r) => OnRequestComplete(r), new List<RequestHeader> 
             {
                 contentHeader,
                 acceptHeader

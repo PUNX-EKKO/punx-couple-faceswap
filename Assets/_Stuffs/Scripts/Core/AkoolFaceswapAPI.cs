@@ -131,7 +131,7 @@ namespace PUNX.Core{
                 List<List<List<int>>> landmarks = faceDetectResponse.landmarks;
                 try
                 {
-                    if(landmarks.Count < 1){
+                    if(landmarks.Count <= 1){
                     EventManager.OnFetchedError?.Invoke(200);
                     yield break;
                     }else if (landmarks.Count >=3) {
