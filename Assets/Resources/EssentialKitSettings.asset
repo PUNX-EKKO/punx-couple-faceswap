@@ -100,74 +100,74 @@ MonoBehaviour:
     m_isEnabled: 1
     m_products:
     - m_id: rookiepack
-      m_platformId: com.punx.kidolai.rookiepack
+      m_platformId: com.punx.coupleai.rookiepack
       m_platformIdOverrides:
-        m_ios: com.punx.kidolai.rookiepack
+        m_ios: com.punx.coupleai.rookiepack
         m_tvos: 
-        m_android: com.punx.kidolai.rookiepack
+        m_android: com.punx.coupleai.rookiepack
       m_productType: 0
       m_title: Rookie Package
-      m_description: Generate 15 AI Images
+      m_description: Generate 15 AI Couple  Images
       m_androidProperties:
         m_publicKey: 
         m_developerPayload: 
     - m_id: starpack
-      m_platformId: com.punx.kidolai.starpack
+      m_platformId: com.punx.coupleai.starpack
       m_platformIdOverrides:
-        m_ios: com.punx.kidolai.starpack
+        m_ios: com.punx.coupleai.starpack
         m_tvos: 
-        m_android: com.punx.kidolai.starpack
+        m_android: com.punx.coupleai.starpack
       m_productType: 0
       m_title: Star Package
-      m_description: Generate 30 AI Images
+      m_description: Generate 30 AI Couple  Images
       m_androidProperties:
         m_publicKey: 
         m_developerPayload: 
     - m_id: iconpack
-      m_platformId: com.punx.kidolai.iconpack
+      m_platformId: com.punx.coupleai.iconpack
       m_platformIdOverrides:
-        m_ios: com.punx.kidolai.iconpack
+        m_ios: com.punx.coupleai.iconpack
         m_tvos: 
-        m_android: com.punx.kidolai.iconpack
+        m_android: com.punx.coupleai.iconpack
       m_productType: 0
       m_title: Icon Package
-      m_description: Generate 45 AI Images
+      m_description: Generate 45 AI Couple Images
       m_androidProperties:
         m_publicKey: 
         m_developerPayload: 
     - m_id: discountediconpack
-      m_platformId: com.punx.kidolai.iconpack.discount10
+      m_platformId: com.punx.coupleai.iconpack.discount10
       m_platformIdOverrides:
-        m_ios: com.punx.kidolai.iconpack.discount10
+        m_ios: com.punx.coupleai.iconpack.discount10
         m_tvos: 
-        m_android: com.punx.kidolai.iconpack.discount10
+        m_android: com.punx.coupleai.iconpack.discount10
       m_productType: 0
       m_title: Icon Package (Discounted Price)
-      m_description: Generate 45 AI Images
+      m_description: Generate 45 AI Couple Images
       m_androidProperties:
         m_publicKey: 
         m_developerPayload: 
     - m_id: discountedstarpack
-      m_platformId: com.punx.kidolai.starpack.discount10
+      m_platformId: com.punx.coupleai.starpack.discount10
       m_platformIdOverrides:
-        m_ios: com.punx.kidolai.starpack.discount10
+        m_ios: com.punx.coupleai.starpack.discount10
         m_tvos: 
         m_android: com.punx.kidolai.starpack.discount10
       m_productType: 0
       m_title: Star Package (Discounted Price)
-      m_description: Generate 30 AI Images
+      m_description: Generate 30 AI Couple Images
       m_androidProperties:
         m_publicKey: 
         m_developerPayload: 
     - m_id: discountedrookiepack
-      m_platformId: com.punx.kidolai.rookiepack.discount10
+      m_platformId: com.punx.coupleai.rookiepack.discount10
       m_platformIdOverrides:
-        m_ios: com.punx.kidolai.rookiepack.discount10
+        m_ios: com.punx.coupleai.rookiepack.discount10
         m_tvos: 
-        m_android: com.punx.kidolai.rookiepack.discount10
+        m_android: com.punx.coupleai.rookiepack.discount10
       m_productType: 0
       m_title: Rookie Package (Discounted Price)
-      m_description: Generate 15 AI Images
+      m_description: Generate 15 AI Couple Images
       m_androidProperties:
         m_publicKey: 
         m_developerPayload: 
@@ -177,7 +177,7 @@ MonoBehaviour:
     m_iosProperties:
       m_customVerificationServerURL: 
     m_androidProperties:
-      m_publicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjchUgEVzwjzeAL5GrbR0ipfcLKs2rKjMh2wP7oPTCKERC7qRhqC30OkNiSqd4oXAMqIuKfWd5EhoGvu89P/RD1pAzjgqROuenASDIJrg/nEqjWeanVxEK/WExUN/p46kJeAJPaNc1H4r4SKnak+40ro09CPkunFMDQAdsZRff1RmSWxAtccTcBUw867RHdKv42dzdsnOIiwfwY6nF8Dq4Unfh7KNbQ3yAdgO2CTnm2myGJlBigFsMYfJcrfzuAXbQ/5GSlHgwLjueOndRsvPBX4AFfiPqnragT72ciuVi1aa/IOE1AN2W1Myy/KNWoKXZtLASZBy4qc8xlhu1OLPswIDAQAB
+      m_publicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuysyZ8AsjswNiu08t1eaVpXsRUDMej6Ie1D1+ebvWTeIrQAAIbCalWzzOLG6cuh9Qhz5RZyMgddVTIoic/Rrf/oRQaEPnNR/Vle5x6bMncQvoXw0wXyuh+IZ3GkX+T/Gmy/ow72z1ei7vntCiQQVh9Ru61eNv3fuLa4UJjVaaBImp/G5eKHs1ZBhKf2QA6v8VQrxTngOrgVcU3/Hv39Sssi1azQOaFbSO1g+n3CPcSatGBqRzB9Z3UlaDsDK+hragWVduAAtuTiAR/Od4Y1Ih6cjM0aIAdeRh+CDHCLcSZlwbfSWG3VWCm1QXElm22E8lF2j0z7yWNCbJ4YS5Cjm8wIDAQAB
   m_networkServicesSettings:
     m_isEnabled: 0
     m_hostAddress:

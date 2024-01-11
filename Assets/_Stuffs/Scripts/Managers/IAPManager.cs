@@ -232,13 +232,13 @@ public class IAPManager : MonoBehaviour
                 switch (iAPPackage)
                 {
                     case IAPPackages.ROOKIE:
-                        BuyItemById("com.punx.kidolai.rookiepack");
+                        BuyItemById("com.punx.coupleai.rookiepack");
                     break;
                     case IAPPackages.STAR: 
-                        BuyItemById("com.punx.kidolai.starpack");
+                        BuyItemById("com.punx.coupleai.starpack");
                     break;
                     case IAPPackages.ICON: 
-                        BuyItemById("com.punx.kidolai.iconpack");
+                        BuyItemById("com.punx.coupleai.iconpack");
                     break;
                     
                 }
@@ -246,13 +246,13 @@ public class IAPManager : MonoBehaviour
                 switch (iAPPackage)
                 {
                     case IAPPackages.ROOKIE:
-                        BuyItemById("com.punx.kidolai.rookiepack.discount10");
+                        BuyItemById("com.punx.coupleai.rookiepack.discount10");
                     break;
                     case IAPPackages.STAR: 
-                        BuyItemById("com.punx.kidolai.starpack.discount10");
+                        BuyItemById("com.punx.coupleai.starpack.discount10");
                     break;
                     case IAPPackages.ICON: 
-                        BuyItemById("com.punx.kidolai.iconpack.discount10");
+                        BuyItemById("com.punx.coupleai.iconpack.discount10");
                     break;
                     
                 }
@@ -281,23 +281,23 @@ public class IAPManager : MonoBehaviour
             {
                 if(!FirestoreDatabase.instance.userData.hasIAPDiscount){
                     if(BillingServices.Products[i].PlatformId.Equals(id)){
-                        if(id.Equals("com.punx.kidolai.rookiepack")){
+                        if(id.Equals("com.punx.coupleai.rookiepack")){
                             rookieTexts[2].text = BillingServices.Products[i].LocalizedPrice;
-                        }else if(id.Equals("com.punx.kidolai.starpack")){
+                        }else if(id.Equals("com.punx.coupleai.starpack")){
                             starTexts[2].text = BillingServices.Products[i].LocalizedPrice;
                         }
-                        else if(id.Equals("com.punx.kidolai.iconpack")){
+                        else if(id.Equals("com.punx.coupleai.iconpack")){
                             iconTexts[2].text = BillingServices.Products[i].LocalizedPrice;
                         }
                     }
                 }else{
                     if(BillingServices.Products[i].PlatformId.Equals(id)){
-                        if(id.Equals("com.punx.kidolai.rookiepack.discount10")){
+                        if(id.Equals("com.punx.coupleai.rookiepack.discount10")){
                           rookieTexts[2].text = BillingServices.Products[i].LocalizedPrice;
-                        }else if(id.Equals("com.punx.kidolai.starpack.discount10")){
+                        }else if(id.Equals("com.punx.coupleai.starpack.discount10")){
                             starTexts[2].text = BillingServices.Products[i].LocalizedPrice;
                         }
-                        else if(id.Equals("com.punx.kidolai.iconpack.discount10")){
+                        else if(id.Equals("com.punx.coupleai.iconpack.discount10")){
                             iconTexts[2].text = BillingServices.Products[i].LocalizedPrice;
                         }
                     }
@@ -311,17 +311,17 @@ public class IAPManager : MonoBehaviour
         if(!FirestoreDatabase.instance.userData.hasIAPDiscount){
             switch (productID)
             {
-                case "com.punx.kidolai.rookiepack":
+                case "com.punx.coupleai.rookiepack":
                     Debug.Log($"Rookie Package Purchased");
                     EventManager.OnPurchaseSuccess?.Invoke(IAPPackages.ROOKIE);
                 // FirebaseAnalytics.LogEvent("package_rookie");
                     break;
-                case "com.punx.kidolai.starpack":
+                case "com.punx.coupleai.starpack":
                     Debug.Log($"Star Package Purchased");
                     EventManager.OnPurchaseSuccess?.Invoke(IAPPackages.STAR);
                 //  FirebaseAnalytics.LogEvent(IAPPackages.STAR.ToString("package_star"));
                 break;
-                case "com.punx.kidolai.iconpack":
+                case "com.punx.coupleai.iconpack":
                     Debug.Log($"Icon Package Purchased");
                     EventManager.OnPurchaseSuccess?.Invoke(IAPPackages.ICON);
                 //  FirebaseAnalytics.LogEvent("package_icon");
@@ -333,17 +333,17 @@ public class IAPManager : MonoBehaviour
         }else{
             switch (productID)
             {
-                case "com.punx.kidolai.rookiepack.discount10":
+                case "com.punx.coupleai.rookiepack.discount10":
                     Debug.Log($"Rookie Package Purchased");
                     EventManager.OnPurchaseSuccess?.Invoke(IAPPackages.ROOKIE);
                 // FirebaseAnalytics.LogEvent("package_rookie");
                     break;
-                case "com.punx.kidolai.starpack.discount10":
+                case "com.punx.coupleai.starpack.discount10":
                     Debug.Log($"Star Package Purchased");
                     EventManager.OnPurchaseSuccess?.Invoke(IAPPackages.STAR);
                 //  FirebaseAnalytics.LogEvent(IAPPackages.STAR.ToString("package_star"));
                 break;
-                case "com.punx.kidolai.iconpack.discount10":
+                case "com.punx.coupleai.iconpack.discount10":
                     Debug.Log($"Icon Package Purchased");
                     EventManager.OnPurchaseSuccess?.Invoke(IAPPackages.ICON);
                 //  FirebaseAnalytics.LogEvent("package_icon");
