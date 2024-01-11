@@ -183,6 +183,9 @@ MonoBehaviour:
   cropHeight: 400
   userface1: {fileID: 1307297933}
   userface2: {fileID: 1726092093}
+  draggableImages: []
+  faceAssignUI: {fileID: 0}
+  m_facePlaceholder: {fileID: 0}
 --- !u!1 &303088941
 GameObject:
   m_ObjectHideFlags: 0
@@ -658,7 +661,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c1bc58f374ffc4e41bc4d400a4756e38, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 653cc211edcaa8643b05b8bc54a10c99, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -688,7 +691,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 059f45ed3d35d9043ac6244feb4fd39c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FaceID: 0
+  faceProfileSO: {fileID: 0}
+  m_akool: {fileID: 0}
+  DraggableImageStatus: 0
+  currentPosition: {fileID: 0}
   defaultPosition: {fileID: 1414315132}
 --- !u!114 &779128990
 MonoBehaviour:
@@ -803,6 +809,7 @@ MonoBehaviour:
     seconds: 0
     trx_id: 
   _imagesData: {fileID: 0}
+  keypointHandller: {fileID: 0}
 --- !u!4 &822967228
 Transform:
   m_ObjectHideFlags: 0
@@ -1115,7 +1122,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 059f45ed3d35d9043ac6244feb4fd39c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FaceID: 0
+  faceProfileSO: {fileID: 0}
+  m_akool: {fileID: 0}
+  DraggableImageStatus: 0
+  currentPosition: {fileID: 0}
   defaultPosition: {fileID: 1498048514}
 --- !u!114 &1050256238
 MonoBehaviour:
