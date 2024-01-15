@@ -20,6 +20,7 @@ public class DraggableImage : MonoBehaviour, IDragHandler, IPointerDownHandler, 
     /// </summary>
     public int DraggableImageStatus; 
     private Transform panelTransform; // Reference to the panel's transform
+    [SerializeField] GameObject currentPosition;
     [SerializeField] GameObject defaultPosition; // Default position to return the button
 
     private void Start()
@@ -54,7 +55,7 @@ public class DraggableImage : MonoBehaviour, IDragHandler, IPointerDownHandler, 
 
         foreach (Collider2D collider in overlappingColliders)
         {
-            if (collider.CompareTag("IconTag"))
+            if (collider.CompareTag("IconTag") && currentPosition == null)
             {
                 // Set the button as a child of the RawImage
                 transform.SetParent(collider.transform);
@@ -69,17 +70,20 @@ public class DraggableImage : MonoBehaviour, IDragHandler, IPointerDownHandler, 
                 {
                     DraggableImageStatus = 1;
                     EventManager.OnMaleFaceDataFetched?.Invoke($"{faceProfileSO.keypoints[0]}:{faceProfileSO.keypoints[1]}:{faceProfileSO.keypoints[2]}:{faceProfileSO.keypoints[3]}");
+                    currentPosition = transform.parent.gameObject;
                     
                 }
                 else if(collider.gameObject.name == "MaskedFaceSlot(Female)")
                 {
                     DraggableImageStatus = 2;
                     EventManager.OnFemaleFaceDataFetched?.Invoke($"{faceProfileSO.keypoints[0]}:{faceProfileSO.keypoints[1]}:{faceProfileSO.keypoints[2]}:{faceProfileSO.keypoints[3]}");
+                    currentPosition = transform.parent.gameObject;
                 }
                 return; // Stop checking for RawImages once one is found
             }
         }
 
+        currentPosition = null; 
         // If not over any RawImage, set the parent back to the panel
         transform.SetParent(panelTransform);
         DraggableImageStatus = 0;
