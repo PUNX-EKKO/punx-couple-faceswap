@@ -6,7 +6,7 @@ using PUNX.Core;
 public class DraggableImage : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
 {
     public FaceProfileSO faceProfileSO;
-    [SerializeField]private AkoolFaceswapAPI m_akool;
+    [SerializeField] private AkoolFaceswapAPI m_akool;
     private RectTransform rectTransform;
     private Canvas canvas;
     private CanvasGroup canvasGroup;
@@ -18,7 +18,7 @@ public class DraggableImage : MonoBehaviour, IDragHandler, IPointerDownHandler, 
     ///  Assigned to Male = 1, 
     ///  Assigned to Female = 2
     /// </summary>
-    public int DraggableImageStatus; 
+    public int DraggableImageStatus;
     private Transform panelTransform; // Reference to the panel's transform
     [SerializeField] GameObject currentPosition;
     [SerializeField] GameObject defaultPosition; // Default position to return the button
@@ -66,27 +66,27 @@ public class DraggableImage : MonoBehaviour, IDragHandler, IPointerDownHandler, 
                 // Update the currentRawImage reference
                 currentRawImage = collider.transform;
 
-                if(collider.gameObject.name == "MaskedFaceSlot(Male)")
+                if (collider.gameObject.name == "MaskedFaceSlot(Male)")
                 {
                     DraggableImageStatus = 1;
+                    currentPosition = collider.gameObject;
                     EventManager.OnMaleFaceDataFetched?.Invoke($"{faceProfileSO.keypoints[0]}:{faceProfileSO.keypoints[1]}:{faceProfileSO.keypoints[2]}:{faceProfileSO.keypoints[3]}");
-                    currentPosition = transform.parent.gameObject;
-                    
+
                 }
-                else if(collider.gameObject.name == "MaskedFaceSlot(Female)")
+                else if (collider.gameObject.name == "MaskedFaceSlot(Female)")
                 {
                     DraggableImageStatus = 2;
+                    currentPosition = collider.gameObject;
                     EventManager.OnFemaleFaceDataFetched?.Invoke($"{faceProfileSO.keypoints[0]}:{faceProfileSO.keypoints[1]}:{faceProfileSO.keypoints[2]}:{faceProfileSO.keypoints[3]}");
-                    currentPosition = transform.parent.gameObject;
                 }
                 return; // Stop checking for RawImages once one is found
             }
         }
 
-        currentPosition = null; 
         // If not over any RawImage, set the parent back to the panel
         transform.SetParent(panelTransform);
         DraggableImageStatus = 0;
+        currentPosition = null;
         //TODO: Add Checking if the item is assigned
         // Return the button to the default position
         rectTransform.localPosition = defaultPosition.transform.localPosition;
