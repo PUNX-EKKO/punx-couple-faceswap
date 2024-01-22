@@ -9979,7 +9979,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5, y: -37}
+  m_AnchoredPosition: {x: 5, y: 3}
   m_SizeDelta: {x: 657.76, y: 778.4813}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &724502763
@@ -13152,7 +13152,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5.0000153, y: -35.725487}
+  m_AnchoredPosition: {x: 5.0000153, y: 4.2744827}
   m_SizeDelta: {x: 100, y: 119.7237}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &920941885
@@ -15131,7 +15131,6 @@ GameObject:
   - component: {fileID: 1079380710}
   - component: {fileID: 1079380709}
   - component: {fileID: 1079380708}
-  - component: {fileID: 1079380707}
   m_Layer: 5
   m_Name: Privacy Policy
   m_TagString: Untagged
@@ -15161,19 +15160,6 @@ RectTransform:
   m_AnchoredPosition: {x: 13.999, y: -364}
   m_SizeDelta: {x: 618, y: 134.88}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1079380707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1079380705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a29f18e8b7839c74587071708bf42625, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_collectionBtn: {fileID: 1079380708}
 --- !u!114 &1079380708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21194,7 +21180,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 5, y: 118}
+  m_AnchoredPosition: {x: 5, y: 108}
   m_SizeDelta: {x: 545.0344, y: 135.9364}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1507654861
@@ -21695,7 +21681,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 5, y: 264}
+  m_AnchoredPosition: {x: 5, y: 236.00003}
   m_SizeDelta: {x: 545.0344, y: 135.9364}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1580900719
