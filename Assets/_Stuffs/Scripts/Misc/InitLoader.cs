@@ -6,6 +6,7 @@ public class InitLoader : MonoBehaviour
 {
     
     [SerializeField]private Slider loadingSlider;
+    public Image logoLoading;
     public float targetProgress;
     public float currentProgress;
     public float loadingSpeed;
@@ -23,7 +24,8 @@ public class InitLoader : MonoBehaviour
     {
         targetProgress=0;
         // Initialize the slider value
-        loadingSlider.value = currentProgress;
+        //loadingSlider.value = currentProgress;
+        logoLoading.fillAmount = currentProgress;
     }
 
     private void Update()
@@ -31,8 +33,9 @@ public class InitLoader : MonoBehaviour
         if (currentProgress < targetProgress)
         {
             currentProgress += loadingSpeed * Time.deltaTime;
-            loadingSlider.value = currentProgress;
-                if(loadingSlider.value >= 100){
+            //loadingSlider.value = currentProgress;
+            logoLoading.fillAmount = currentProgress/100;
+            if (logoLoading.fillAmount >= 1){
                     LoadingComplete();
                 }
         }

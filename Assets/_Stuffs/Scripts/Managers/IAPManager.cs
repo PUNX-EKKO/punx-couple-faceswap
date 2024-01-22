@@ -75,9 +75,9 @@ public class IAPManager : MonoBehaviour
                 bullets[1].SetActive(false);
                 bullets[2].SetActive(false);
                 iAPPackage = IAPPackages.ROOKIE;
-                iapItemBtns[0].interactable = false;
-                iapItemBtns[1].interactable = true;
-                iapItemBtns[2].interactable = true;
+                //iapItemBtns[0].interactable = false;
+               // iapItemBtns[1].interactable = true;
+              //  iapItemBtns[2].interactable = true;
             break;
 
             case 1:
@@ -85,9 +85,9 @@ public class IAPManager : MonoBehaviour
                 bullets[1].SetActive(true);
                 bullets[2].SetActive(false);
                 iAPPackage = IAPPackages.STAR;
-                iapItemBtns[0].interactable = true;
-                iapItemBtns[1].interactable = false;
-                iapItemBtns[2].interactable = true;
+               // iapItemBtns[0].interactable = true;
+               // iapItemBtns[1].interactable = false;
+               // iapItemBtns[2].interactable = true;
             break;
 
             case 2:
@@ -95,12 +95,12 @@ public class IAPManager : MonoBehaviour
                 bullets[1].SetActive(false);
                 bullets[2].SetActive(true);
                 iAPPackage = IAPPackages.ICON;
-                iapItemBtns[0].interactable = true;
-                iapItemBtns[1].interactable = true;
-                iapItemBtns[2].interactable = false;
+               // iapItemBtns[0].interactable = true;
+               // iapItemBtns[1].interactable = true;
+               // iapItemBtns[2].interactable = false;
             break;
         }
-        SwitchTextColors(btnIndex);
+       // SwitchTextColors(btnIndex);
     
         
     }

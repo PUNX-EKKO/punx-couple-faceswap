@@ -52,14 +52,14 @@ public class LoadingHandler : MonoBehaviour
             percentageText.text = currentProgress.ToString("F0") + "%";
             currentThreshold = Mathf.Floor(fillingBar.fillAmount * 4.0f) * 0.25f;
 
-            if (currentThreshold > currentImageIndex * 0.25f)
-            {
-                currentImageIndex = Mathf.FloorToInt(currentThreshold * 4.0f);
-                if (currentImageIndex < images.Length)
-                {
-                    imageToChange.sprite = images[currentImageIndex];
-                }
-            }
+          //  if (currentThreshold > currentImageIndex * 0.25f)
+          //  {
+           //     currentImageIndex = Mathf.FloorToInt(currentThreshold * 4.0f);
+            //    if (currentImageIndex < images.Length)
+           //     {
+           //         imageToChange.sprite = images[currentImageIndex];
+           //     }
+           // }
 
             yield return null;
         }
