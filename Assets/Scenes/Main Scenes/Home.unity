@@ -5988,7 +5988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6145084a3cd01b343b52f4d034ff4f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_environment: 0
+  m_environment: 2
   m_gender: 0
   m_isRandomImage: 1
   UiHandler: {fileID: 1106183862}
@@ -9730,7 +9730,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Proceed
+  m_text: Continue
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8b5d666ca57b2754ca15056e0270c2e2, type: 2}
   m_sharedMaterial: {fileID: -8481961769163187027, guid: 8b5d666ca57b2754ca15056e0270c2e2, type: 2}
@@ -14561,7 +14561,7 @@ GameObject:
   - component: {fileID: 1054044311}
   - component: {fileID: 1054044310}
   m_Layer: 5
-  m_Name: Proceed
+  m_Name: Continue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20108,8 +20108,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 7.6, y: -569}
-  m_SizeDelta: {x: 229.5021, y: 77.681}
+  m_AnchoredPosition: {x: 2, y: -531}
+  m_SizeDelta: {x: 325.7508, y: 113.0917}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1481336904
 MonoBehaviour:
@@ -20192,14 +20192,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9811321, g: 0.66180134, b: 0.66180134, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 76db39e626440a1429435757a8dac267, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 58a8647e97585e2489ee3329aba39b89, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -25424,6 +25424,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buyNowBtn: {fileID: 710582474}
   IAPDialog: {fileID: 134184506}
+  voucherBtn: {fileID: 1481336902}
   iapItemBtns:
   - {fileID: 1441219732}
   - {fileID: 50207622}

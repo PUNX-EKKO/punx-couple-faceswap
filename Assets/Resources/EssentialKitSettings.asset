@@ -15,7 +15,7 @@ MonoBehaviour:
   m_applicationSettings:
     m_logLevel: 3
     m_appStoreIds:
-      m_ios: 6471567022
+      m_ios: 6476081556
       m_tvos: 
       m_android: com.punx.coupleai
     m_usagePermissionSettings:
@@ -152,7 +152,7 @@ MonoBehaviour:
       m_platformIdOverrides:
         m_ios: com.punx.coupleai.starpack.discount10
         m_tvos: 
-        m_android: com.punx.kidolai.starpack.discount10
+        m_android: com.punx.coupleai.starpack.discount10
       m_productType: 0
       m_title: Star Package (Discounted Price)
       m_description: Generate 30 AI Couple Images

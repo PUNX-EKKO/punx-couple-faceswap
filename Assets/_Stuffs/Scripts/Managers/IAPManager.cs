@@ -11,6 +11,7 @@ public class IAPManager : MonoBehaviour
 {
     public Button buyNowBtn;
     public GameObject IAPDialog;
+    public GameObject voucherBtn;
     public Button[] iapItemBtns;
     public GameObject[] bullets;
     public TextMeshProUGUI[] rookieTexts;
@@ -50,6 +51,10 @@ public class IAPManager : MonoBehaviour
             IAPDialog.SetActive(false);
         }else{
             IAPDialog.SetActive(true);
+
+            if (FirestoreDatabase.instance.AppSettingsData.enableVoucher) voucherBtn.SetActive(true);
+            else voucherBtn.SetActive(false);
+
             FirestoreDatabase.instance.GetOrders();
             SwitchSelection(0);
             SetupItemProducts();

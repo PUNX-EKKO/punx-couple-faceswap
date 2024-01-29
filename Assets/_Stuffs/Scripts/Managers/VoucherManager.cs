@@ -27,6 +27,7 @@ public class VoucherManager : MonoBehaviour
         EventManager.OnVoucherFailed += OnVoucherFailed;
         if(m_voucherWarning.activeSelf)m_voucherWarning.SetActive(false);
         m_inputField.text = "";
+       
     }
     void OnDisable()
     {

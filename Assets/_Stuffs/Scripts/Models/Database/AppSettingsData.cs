@@ -17,6 +17,8 @@ public struct AppSettingsData
     [FirestoreProperty]
     public string androidVersion {get; set;}
     [FirestoreProperty]
+    public bool enableVoucher { get; set; }
+    [FirestoreProperty]
     public string iosVersion {get; set;}
     
     
