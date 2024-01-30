@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+
 public class InitLoader : MonoBehaviour
 {
-    
-    [SerializeField]private Slider loadingSlider;
+    [SerializeField] private Slider loadingSlider;
     public Image logoLoading;
+    public TMP_Text percentageText; // Reference to TextMeshPro component
     public float targetProgress;
     public float currentProgress;
     public float loadingSpeed;
@@ -15,16 +17,15 @@ public class InitLoader : MonoBehaviour
     {
         EventManager.OnAddLoadingValue += AddLoadingValue;
     }
+
     void OnDisable()
     {
         EventManager.OnAddLoadingValue -= AddLoadingValue;
     }
 
-     private void Start()
+    private void Start()
     {
-        targetProgress=0;
-        // Initialize the slider value
-        //loadingSlider.value = currentProgress;
+        targetProgress = 0;
         logoLoading.fillAmount = currentProgress;
     }
 
@@ -33,21 +34,30 @@ public class InitLoader : MonoBehaviour
         if (currentProgress < targetProgress)
         {
             currentProgress += loadingSpeed * Time.deltaTime;
-            //loadingSlider.value = currentProgress;
-            logoLoading.fillAmount = currentProgress/100;
-            if (logoLoading.fillAmount >= 1){
-                    LoadingComplete();
-                }
+            logoLoading.fillAmount = currentProgress / 100;
+            UpdatePercentageText(); // Update the TextMeshPro text
+            if (logoLoading.fillAmount >= 1)
+            {
+                LoadingComplete();
+            }
         }
     }
 
-    public void AddLoadingValue(float value){
-           targetProgress += value;
+    public void AddLoadingValue(float value)
+    {
+        targetProgress += value;
     }
 
-    void LoadingComplete(){
+    void LoadingComplete()
+    {
         gameObject.SetActive(false);
         AppCoreManager.instance.InitLoad();
     }
 
+    void UpdatePercentageText()
+    {
+        // Display the rounded percentage in TextMeshPro text
+        int roundedPercentage = Mathf.RoundToInt(currentProgress);
+        percentageText.text = "Loading: " + roundedPercentage + "%";
+    }
 }

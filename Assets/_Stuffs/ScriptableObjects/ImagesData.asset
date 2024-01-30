@@ -15,11 +15,5 @@ MonoBehaviour:
   newGeneratedImages: []
   generatedImages: []
   sourceImages: []
-  coupleTargetImages:
-  - https://kidol-punx-filestorage.s3.ap-southeast-2.amazonaws.com/targetimages/samples/Couple1.jpg
-  - https://kidol-punx-filestorage.s3.ap-southeast-2.amazonaws.com/targetimages/samples/Couple2.jpg
-  - https://kidol-punx-filestorage.s3.ap-southeast-2.amazonaws.com/targetimages/samples/Couple3.jpg
-  coupleFaceLandmarks:
-  - 200,261:314,272:271,344:194,384-407,286:517,273:453,356:437,400
-  - 491,210:589,213:534,269:494,311-341,203:421,210:401,262:335,296
-  - 440,203:518,195:465,250:453,286-312,238:385,240:365,290:316,322
+  coupleTargetImages: []
+  coupleFaceLandmarks: []
