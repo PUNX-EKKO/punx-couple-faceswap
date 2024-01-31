@@ -2,22 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-
 public class InitLoader : MonoBehaviour
 {
+
     [SerializeField] private Slider loadingSlider;
     public Image logoLoading;
-    public TMP_Text percentageText; // Reference to TextMeshPro component
     public float targetProgress;
     public float currentProgress;
     public float loadingSpeed;
+
 
     void OnEnable()
     {
         EventManager.OnAddLoadingValue += AddLoadingValue;
     }
-
     void OnDisable()
     {
         EventManager.OnAddLoadingValue -= AddLoadingValue;
@@ -26,6 +24,8 @@ public class InitLoader : MonoBehaviour
     private void Start()
     {
         targetProgress = 0;
+        // Initialize the slider value
+        //loadingSlider.value = currentProgress;
         logoLoading.fillAmount = currentProgress;
     }
 
@@ -34,8 +34,8 @@ public class InitLoader : MonoBehaviour
         if (currentProgress < targetProgress)
         {
             currentProgress += loadingSpeed * Time.deltaTime;
+            //loadingSlider.value = currentProgress;
             logoLoading.fillAmount = currentProgress / 100;
-            UpdatePercentageText(); // Update the TextMeshPro text
             if (logoLoading.fillAmount >= 1)
             {
                 LoadingComplete();
@@ -54,10 +54,4 @@ public class InitLoader : MonoBehaviour
         AppCoreManager.instance.InitLoad();
     }
 
-    void UpdatePercentageText()
-    {
-        // Display the rounded percentage in TextMeshPro text
-        int roundedPercentage = Mathf.RoundToInt(currentProgress);
-        percentageText.text = "Loading: " + roundedPercentage + "%";
-    }
 }
